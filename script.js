@@ -895,7 +895,7 @@ function initSkillGrid() {
     { name:'SQL',        img:'https://cdn-icons-png.flaticon.com/512/919/919836.png',  pct:'75%' },
     { name:'GitHub',     img:'https://cdn-icons-png.flaticon.com/512/733/733553.png',  pct:'82%', inv:true },
     { name:'MERN',       img:'https://cdn-icons-png.flaticon.com/512/919/919825.png',  pct:'76%' },
-    { name:'Flask',      img:'https://cdn-icons-png.flaticon.com/512/5968/5968381.png',pct:'72%' },
+    { name:'Type Script',      img:'https://cdn-icons-png.flaticon.com/512/5968/5968381.png',pct:'72%' },
     { name:'Spring Boot', img:'https://cdn-icons-png.flaticon.com/512/919/919837.png', pct:'80%' },
 { name:'Maven', img:'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apache/apache-original.svg', pct:'78%' },
 { name:'Gradle',      img:'https://cdn-icons-png.flaticon.com/512/5968/5968705.png', pct:'72%' },
