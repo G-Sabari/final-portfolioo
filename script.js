@@ -1,5 +1,5 @@
 /* ══════════════════════════════════════
-   RAM PORTFOLIO — script.js  (COMPLETE)
+   PORTFOLIO — script.js  (COMPLETE)
    Cinematic · Holographic · AI-powered
    Vanilla HTML/CSS/JS — no frameworks
 ══════════════════════════════════════ */
@@ -96,7 +96,7 @@ document.addEventListener('mousemove', e => {
 
   /* ── boot log messages ── */
   const msgs = [
-    ['init', 'Initializing RAM_OS v3.0.0...'],
+    ['init', 'Initializing SYSTEM_OS v3.0.0...'],
     ['ok',   'BIOS checksum: PASS'],
     ['ok',   'Memory allocation: 16.0 GB cleared'],
     ['init', 'Loading neural subsystems...'],
@@ -105,8 +105,8 @@ document.addEventListener('mousemove', e => {
     ['ok',   'Portfolio engine v3 mounted'],
     ['init', 'Rendering holographic layer...'],
     ['ok',   'Particle simulation: online'],
-    ['warn', 'Connecting AI assistant (RAM.AI)...'],
-    ['ok',   'RAM.AI core loaded — context ready'],
+    ['warn', 'Connecting AI assistant (SYSTEM.AI)...'],
+    ['ok',   'SYSTEM.AI core loaded — context ready'],
     ['ok',   'All systems nominal — launching ✓'],
   ];
 
@@ -170,10 +170,42 @@ function initAll() {
   initMagnetic();
   initContact();
   initAI();
+  initTheme();
   initFooterCanvas();
   initHeroNameGlitch();
   initClickRipple();
   initParallax();
+}
+
+function initTheme() {
+  const themeKey = 'sabari_theme';
+  const toggle = $('theme-toggle');
+  if (!toggle) return;
+
+  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const storedValue = localStorage.getItem(themeKey);
+  const initialMode = storedValue === 'light' || storedValue === 'dark'
+    ? storedValue
+    : (prefersDark ? 'dark' : 'light');
+
+  const updateMeta = mode => {
+    const themeMeta = document.querySelector('meta[name="theme-color"]');
+    if (themeMeta) themeMeta.setAttribute('content', mode === 'light' ? '#f8fafc' : '#020408');
+  };
+
+  const setTheme = mode => {
+    const isLight = mode === 'light';
+    document.body.classList.toggle('light', isLight);
+    toggle.textContent = isLight ? '☀' : '☾';
+    toggle.setAttribute('aria-label', `Switch to ${isLight ? 'dark' : 'light'} mode`);
+    updateMeta(mode);
+    localStorage.setItem(themeKey, mode);
+  };
+
+  setTheme(initialMode);
+  toggle.addEventListener('click', () => {
+    setTheme(document.body.classList.contains('light') ? 'dark' : 'light');
+  });
 }
 
 /* ══════════════════════════════════════
@@ -590,9 +622,9 @@ function initSkillGalaxy() {
     { name:'CSS3',       color:'#264de4', r:26 },
     { name:'JavaScript', color:'#f7df1e', r:30 },
     { name:'React',      color:'#61dafb', r:27 },
-    { name:'Python',     color:'#3572A5', r:26 },
-    { name:'Maven',    color:'#68a063', r:24 },
-    { name:'Flask',      color:'#aaaaaa', r:22 },
+    // { name:'Python',     color:'#3572A5', r:26 },
+    // { name:'Maven',    color:'#68a063', r:24 },
+    // { name:'Flask',      color:'#aaaaaa', r:22 },
     { name:'SQL',        color:'#00758f', r:23 },
     { name:'Java',       color:'#f89820', r:24 },
     { name:'Git',        color:'#f05032', r:22 },
@@ -890,16 +922,16 @@ function initSkillGrid() {
     { name:'CSS3',       img:'https://cdn-icons-png.flaticon.com/512/732/732190.png',  pct:'88%' },
     { name:'JS', img:'https://cdn-icons-png.flaticon.com/512/5968/5968292.png',pct:'85%' },
     { name:'React.js',   img:'https://cdn-icons-png.flaticon.com/512/919/919851.png',  pct:'78%' },
-    { name:'Python',     img:'https://cdn-icons-png.flaticon.com/512/5968/5968350.png',pct:'80%' },
+    // { name:'Python',     img:'https://cdn-icons-png.flaticon.com/512/5968/5968350.png',pct:'80%' },
     { name:'Java',       img:'https://cdn-icons-png.flaticon.com/512/226/226777.png',  pct:'70%' },
     { name:'SQL',        img:'https://cdn-icons-png.flaticon.com/512/919/919836.png',  pct:'75%' },
     { name:'GitHub',     img:'https://cdn-icons-png.flaticon.com/512/733/733553.png',  pct:'82%', inv:true },
-    { name:'MERN',       img:'https://cdn-icons-png.flaticon.com/512/919/919825.png',  pct:'76%' },
-    { name:'Type Script', img:'https://cdn-icons-png.flaticon.com/512/5968/5968381.png',pct:'72%' },
+    // { name:'MERN',       img:'https://cdn-icons-png.flaticon.com/512/919/919825.png',  pct:'76%' },
+    // { name:'Type Script', img:'https://cdn-icons-png.flaticon.com/512/5968/5968381.png',pct:'72%' },
     { name:'Spring Boot', img:'https://cdn-icons-png.flaticon.com/512/919/919837.png', pct:'80%' },
-{ name:'Maven', img:'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apache/apache-original.svg', pct:'78%' },
-{ name:'Gradle',      img:'https://cdn-icons-png.flaticon.com/512/5968/5968705.png', pct:'72%' },
-{ name:'Machine Learning', img:'https://cdn-icons-png.flaticon.com/512/2103/2103633.png', pct:'70%' }
+// { name:'Maven', img:'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apache/apache-original.svg', pct:'78%' },
+// { name:'Gradle',      img:'https://cdn-icons-png.flaticon.com/512/5968/5968705.png', pct:'72%' },
+// { name:'Machine Learning', img:'https://cdn-icons-png.flaticon.com/512/2103/2103633.png', pct:'70%' }
   ];
 
   SKILLS.forEach(s => {
@@ -1030,7 +1062,7 @@ function initContact() {
 }
 
 /* ══════════════════════════════════════
-   AI ASSISTANT — RAM.AI
+   AI ASSISTANT — SYSTEM.AI
 ══════════════════════════════════════ */
 function initAI() {
   const panel = $('ai-panel'), toggle = $('ai-toggle'), close = $('ai-close');
@@ -1045,18 +1077,18 @@ function initAI() {
 
   // Consolidated Knowledge Base
   const responses = {
-    about: '👨‍💻 Ram (Sai Ram K) is a Full-Stack Developer passionate about building scalable web applications, tackling complex engineering challenges, and creating interactive digital experiences.',
-    skills: '🔥 Ram is proficient in DSA , HTML5, CSS3, JavaScript, React.js, Python, Java, Spring Boot , MAVEN ,SQL, and the MERN Stack. He’s currently scaling into Next.js and AI dev.',
-    projects: '🛠️ Ram\'s builds:\n🎬 *Movies Trending App*\n📄 *Smart Resume Builder* (AI-powered)\n📚 *Digital Library Manager*\n💻 *Personal Portfolio*',
-    contact: '📬 Reach Ram here:\n🔗 LinkedIn: sai-ram-k-847b61375\n💻 GitHub:0007RAM\n📧 Or use the contact form on this page!\n\n*(Note: Personal numbers, WhatsApp, and Discord IDs are private to prevent spam, but he is highly responsive via LinkedIn and Email!)*',
-    leetcode: '📈 Ram has crushed 420+ LeetCode problems spanning Arrays, Graphs, and DP. Handle: 007RAM.',
-    education: '🎓 Ram is currently a 3rd-year B.Tech Computer Science student maintaining clean academic standing with zero active backlogs. He chose engineering out of a core passion for breaking down complex systems and building solutions from scratch.',
-    hiring: '💼 Yes! Ram is actively available for internships, full-time software engineering roles, and freelance collaborations. Drop a message via the contact form or LinkedIn to schedule an interview or introductory call!'
+    about: '👨‍💻 This is a Full-Stack Developer portfolio showcasing scalable web applications, robust engineering, and interactive digital experiences.',
+    skills: '🔥 Sabari is proficient in DSA , HTML5, CSS3, JavaScript, React.js, Python, Java, Spring Boot , MAVEN ,SQL, and the MERN Stack. He’s currently scaling into Next.js and AI dev.',
+    projects: '🛠️ Notable builds:\n🎬 *Movies Trending App*\n📄 *Smart Resume Builder* (AI-powered)\n📚 *Digital Library Manager*\n💻 *Personal Portfolio*',
+    contact: '📬 Reach out via the contact form on this page!\n📧 Or check the social links.\n\n*(All inquiries welcome and responded to promptly.)*',
+    leetcode: '📈 100+ LeetCode problems solved spanning Arrays, Graphs, and Dynamic Programming.',
+    education: '🎓 Computer Science background with strong academic standing and zero active backlogs. Deep passion for breaking down complex systems and building solutions from scratch.',
+    hiring: '💼 Available for internships, full-time software engineering roles, and freelance collaborations. Reach out via the contact form!'
   };
 
   // High-Density Token Association Map
   const keywordMap = {
-    ram: 'about', about: 'about', bio: 'about', profile: 'about', engineer: 'about', developer: 'about', explain: 'about', who: 'about', hobby: 'about', hobbies: 'about', why: 'about', choose: 'about', reason: 'about',
+    about: 'about', bio: 'about', profile: 'about', engineer: 'about', developer: 'about', explain: 'about', who: 'about', hobby: 'about', hobbies: 'about', why: 'about', choose: 'about', reason: 'about',
     skill: 'skills', skills: 'skills', stack: 'skills', tech: 'skills', technology: 'skills', technologies: 'skills', language: 'skills', languages: 'skills', tool: 'skills', tools: 'skills', know: 'skills', use: 'skills', expertise: 'skills', proficient: 'skills', java: 'skills', python: 'skills', react: 'skills', mern: 'skills', backend: 'skills', frontend: 'skills',
     project: 'projects', projects: 'projects', app: 'projects', apps: 'projects', build: 'projects', builds: 'projects', built: 'projects', create: 'projects', created: 'projects', work: 'projects', works: 'projects', portfolio: 'projects', github: 'projects', link: 'projects', links: 'projects',
     contact: 'contact', email: 'contact', reach: 'contact', linkedin: 'contact', connect: 'contact', social: 'contact', message: 'contact', mail: 'contact', phone: 'contact', number: 'contact', mobile: 'contact', whatsapp: 'contact', discord: 'contact', text: 'contact',
@@ -1071,18 +1103,18 @@ function initAI() {
     // 1. TARGETED GUARDRAIL A: Strict Personal Prying
     const personalRegex = /\b(wife|married|marriage|girlfriend|boyfriend|relationship|age|old|salary|money|income|pay|cash|religion|caste|political|politics|party|live|location|address|home)\b/i;
     if (personalRegex.test(q)) {
-      return `FAAAAAHHHH! 💀💀💀💀\n\nNice try, but Ram's personal life/demographics are encrypted. Let's stick to his code, projects, and career skills. Stay focused!`;
+      return `FAAAAAHHHH! 💀💀💀💀\n\nPersonal information is off-limits. Let's stick to engineering, projects, and professional skills. Stay focused!`;
     }
 
     // 2. TARGETED GUARDRAIL B: Academic Dishonesty / Malicious Requests
     const exploitRegex = /\b(hack|hacking|crack|cracking|cheat|cheating|exam|assignment|homework|do my project|write my project)\b/i;
     if (exploitRegex.test(q)) {
-      return `FAAAAAHHHH! 💀💀💀💀\n\nI am an engineering portfolio assistant, not a dark-web client or a homework bot. Ram builds robust, ethical software. Check out his real GitHub projects instead!`;
+      return `FAAAAAHHHH! 💀💀💀💀\n\nI am a portfolio assistant, not a tool for dishonest practices. This portfolio showcases ethical, robust software. Check the real projects instead!`;
     }
 
     // 3. High-Priority Intent Routing (Greetings)
     if (/^(hi|hello|hey|hii|hola|who are you|yo|greetings)/i.test(q)) {
-      return `👋 Yo! I'm RAM.AI. Ask me about Ram's professional projects, engineering skills, or LeetCode stats!`;
+      return `👋 Yo! I'm SYSTEM.AI. Ask me about the projects, engineering skills, or technical details!`;
     }
 
     // 4. Token-Based Scoring Engine
@@ -1108,7 +1140,7 @@ function initAI() {
     }
 
     // 5. Absolute Fallback
-    return `FAAAAAHHHH! 💀💀💀💀\n\nI have no idea what you just said. My knowledge base only covers Ram's professional portfolio. Ask about his projects or skills!`;
+    return `FAAAAAHHHH! 💀💀💀💀\n\nI have no idea what you just said. My knowledge base covers projects, skills, and portfolio details. Ask about those!`;
   }
 
   function appendMsg(text, type) {
