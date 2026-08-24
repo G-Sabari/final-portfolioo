@@ -1,0 +1,13 @@
+{
+  "name": "sabari-portfolio",
+  "version": "1.0.0",
+  "description": "Full-Stack Engineer Portfolio",
+  "main": "temp_server.js",
+  "scripts": {
+    "start": "node temp_server.js",
+    "dev": "node temp_server.js"
+  },
+  "keywords": [],
+  "author": "Sabari",
+  "license": "ISC"
+}
