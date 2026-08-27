@@ -135,6 +135,15 @@ function initCertModal() {
       const title = btn.getAttribute('data-title');
       if (imgSrc) openModal(imgSrc, title);
     });
+
+    btn.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const imgSrc = btn.getAttribute('data-img');
+        const title = btn.getAttribute('data-title');
+        if (imgSrc) openModal(imgSrc, title);
+      }
+    });
   });
 
   if (overlay) overlay.addEventListener('click', closeModal);
