@@ -1981,13 +1981,443 @@ button {
   }
 }
 
-/* ── 17. ACCESSIBILITY / PREFERS-REDUCED-MOTION ── */
+/* ════════════════════════════════════════════════════════════
+   17. ACCESSIBILITY / PREFERS-REDUCED-MOTION
+════════════════════════════════════════════════════════════ */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════
+   18. RESUME SECTION & ATS CANVAS
+════════════════════════════════════════════════════════════ */
+
+/* Hero Resume CTA Button */
+.btn-resume-cta {
+  background-color: var(--accent-light);
+  color: var(--accent) !important;
+  border: 1px solid var(--accent-border);
+  font-weight: 600;
+}
+
+.btn-resume-cta:hover {
+  background-color: var(--accent);
+  color: #ffffff !important;
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-accent);
+}
+
+/* Resume Toolbar */
+.resume-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  padding: 14px 20px;
+  border-radius: var(--radius-lg);
+  margin-bottom: 24px;
+  box-shadow: var(--shadow-sm);
+}
+
+.resume-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--accent);
+  background-color: var(--accent-light);
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--accent-border);
+}
+
+.resume-actions-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Resume Paper Document Canvas */
+.resume-sheet-wrap {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.resume-paper {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: 44px 48px;
+  box-shadow: var(--shadow-md), 0 0 0 1px rgba(0, 75, 160, 0.04);
+  position: relative;
+  transition: var(--transition);
+}
+
+.resume-paper:hover {
+  border-color: var(--border-accent);
+  box-shadow: var(--shadow-lg), 0 0 20px rgba(0, 75, 160, 0.08);
+}
+
+/* Resume Header */
+.resume-header {
+  text-align: center;
+  padding-bottom: 20px;
+  margin-bottom: 24px;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.resume-name {
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+
+.resume-role-tag {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: -0.01em;
+  margin-bottom: 12px;
+}
+
+.resume-contact-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+}
+
+.resume-contact-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-secondary);
+  font-weight: 500;
+  transition: var(--transition-fast);
+}
+
+.resume-contact-item:hover {
+  color: var(--accent);
+}
+
+.resume-contact-item svg {
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.resume-sep {
+  color: var(--text-muted);
+  opacity: 0.5;
+}
+
+/* Resume Block & Headings */
+.resume-block {
+  margin-bottom: 26px;
+}
+
+.resume-sec-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border-bottom: 1.5px solid var(--accent);
+  padding-bottom: 5px;
+  margin-bottom: 14px;
+}
+
+.resume-summary-text {
+  font-size: 0.94rem;
+  line-height: 1.68;
+  color: var(--text-secondary);
+}
+
+.resume-summary-text strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* Resume Entries (Education, Experience, Projects) */
+.resume-entry {
+  margin-bottom: 16px;
+}
+
+.resume-entry:last-child {
+  margin-bottom: 0;
+}
+
+.resume-entry-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+
+.resume-entry-left {
+  flex: 1;
+  min-width: 260px;
+}
+
+.resume-org-name {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.resume-sub-title {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+.resume-grade {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.resume-date-badge {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.resume-tech-sub {
+  font-size: 0.84rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+/* Resume Bullets */
+.resume-bullets {
+  padding-left: 20px;
+  list-style: disc;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.resume-bullets li {
+  font-size: 0.91rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.resume-bullets li strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.resume-certs-list {
+  gap: 8px;
+}
+
+.resume-link {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 500;
+}
+
+.resume-link:hover {
+  color: var(--accent-hover);
+}
+
+/* Resume Skills Matrix */
+.resume-skills-matrix {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.resume-skill-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 0.91rem;
+  line-height: 1.55;
+}
+
+.resume-skill-cat {
+  font-weight: 700;
+  color: var(--text-primary);
+  min-width: 95px;
+  flex-shrink: 0;
+}
+
+.resume-skill-vals {
+  color: var(--text-secondary);
+}
+
+/* ════════════════════════════════════════════════════════════
+   19. TOAST NOTIFICATION
+════════════════════════════════════════════════════════════ */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 2000;
+  background-color: var(--text-primary);
+  color: var(--bg-primary);
+  padding: 12px 20px;
+  border-radius: var(--radius-md);
+  font-size: 0.88rem;
+  font-weight: 600;
+  box-shadow: var(--shadow-lg);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.toast.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* ════════════════════════════════════════════════════════════
+   20. RESPONSIVE BREAKPOINTS FOR RESUME
+════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .resume-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  .resume-actions-group {
+    justify-content: stretch;
+  }
+  .resume-actions-group .btn {
+    flex: 1;
+  }
+  .resume-paper {
+    padding: 28px 20px;
+  }
+  .resume-name {
+    font-size: 1.75rem;
+  }
+  .resume-skill-row {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .resume-skill-cat {
+    min-width: unset;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════
+   21. PRINT MEDIA STYLESHEET (CLEAN RECRUITER PDF)
+════════════════════════════════════════════════════════════ */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 11pt !important;
+    line-height: 1.4 !important;
+  }
+
+  .header,
+  .footer,
+  .hero-section,
+  .hero-ambient-glow,
+  #about,
+  #skills,
+  #experience,
+  #projects,
+  #certifications,
+  #achievements,
+  #contact,
+  .resume-toolbar,
+  #cert-modal,
+  .toast,
+  .theme-toggle,
+  .hamburger {
+    display: none !important;
+  }
+
+  .section {
+    padding: 0 !important;
+  }
+
+  .section-header {
+    display: none !important;
+  }
+
+  .resume-sheet-wrap {
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+
+  .resume-paper {
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    background: transparent !important;
+  }
+
+  .resume-header {
+    border-bottom: 2px solid #004ba0 !important;
+    padding-bottom: 12px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .resume-name {
+    color: #002b66 !important;
+    font-size: 22pt !important;
+  }
+
+  .resume-role-tag {
+    color: #004ba0 !important;
+  }
+
+  .resume-sec-title {
+    color: #004ba0 !important;
+    border-bottom: 1.5px solid #004ba0 !important;
+    font-size: 10.5pt !important;
+    margin-top: 14px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .resume-bullets li {
+    font-size: 9.5pt !important;
+    color: #222222 !important;
+    line-height: 1.4 !important;
+  }
+
+  .resume-skill-row {
+    font-size: 9.5pt !important;
+  }
+
+  .resume-entry {
+    page-break-inside: avoid;
+  }
+
+  @page {
+    margin: 1.2cm 1.5cm;
+    size: A4 portrait;
   }
 }
 

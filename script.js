@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initActiveScroll();
   initCertModal();
   initContactForm();
+  initResumeSection();
 });
 
 /* ── 1. LIGHT / DARK THEME TOGGLE ── */
@@ -220,3 +221,98 @@ function initContactForm() {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   }
 }
+
+/* ── 6. RESUME ACTIONS & TOAST NOTIFICATION ── */
+function initResumeSection() {
+  const printBtn = document.getElementById('btn-print-resume');
+  const copyBtn = document.getElementById('btn-copy-resume');
+
+  if (printBtn) {
+    printBtn.addEventListener('click', () => {
+      window.print();
+    });
+  }
+
+  if (copyBtn) {
+    copyBtn.addEventListener('click', () => {
+      const atsResumeText = `SABARI G
+Phone: +91 8754864826 | Email: sabarideveloperofficial@gmail.com
+LinkedIn: https://www.linkedin.com/in/sabari-profile | GitHub: https://github.com/G-Sabari | Portfolio: https://g-sabari.github.io/
+
+PROFESSIONAL SUMMARY
+Java Full Stack Developer skilled in Java, Spring Boot, React.js, JavaScript, SQL, MySQL, REST APIs, JPA/Hibernate, Spring Security, JWT, OOP, and Data Structures & Algorithms, with a strong foundation in full-stack web development.
+
+EDUCATION
+• St. Peters College of Engineering & Technology, Avadi, Tamil Nadu (Sep 2023 - May 2027)
+  B. Tech – Information Technology + Honours – CGPA: 7.91 / 10
+• Government Higher Secondary School, Namakkal (June 2022 - April 2023)
+  Higher Secondary Certificate (HSC) – 75%
+
+WORKING EXPERIENCE
+• Thiranex — Full Stack Development Intern (May 2026 - June 2026)
+  - Developed responsive web application features using React.js, JavaScript, and REST APIs, integrating frontend components with backend services.
+  - Implemented CRUD operations, tested application functionality, and fixed bugs to improve application performance and reliability.
+
+• Elite Tech Intern — Web Development Intern (Dec 2024 - Jan 2025)
+  - Developed and enhanced web application features using HTML, CSS, JavaScript, and React.js, focusing on responsive and user-friendly interfaces.
+  - Implemented frontend functionality, tested application features, and resolved bugs to improve application performance and usability.
+
+PROJECT EXPERIENCE
+• IT Incident Management System (Java | Spring Boot | JWT | React.js | MySQL | REST APIs)
+  - Developed a full-stack IT incident management system using Java, Spring Boot, React.js, and MySQL to manage IT support tickets through a structured incident lifecycle.
+  - Implemented secure JWT-based authentication and role-based authorization for Users, Support Agents, and Administrators, with controlled access to incident operations.
+  - Designed RESTful APIs for incident creation, assignment, status tracking, comments, and incident history, following a layered Spring Boot architecture with JPA/Hibernate.
+
+• Employee Leave Management System (Java | Spring Boot | React.js | REST APIs | MySQL)
+  - Developed a full-stack employee leave management application using Java, Spring Boot, React.js, and MySQL to streamline leave application and tracking.
+  - Designed and integrated RESTful APIs for employee management, leave submission, leave status tracking, and approval workflows.
+  - Implemented a layered backend architecture using Spring Boot, JPA/Hibernate, and MySQL, with a React.js frontend for managing employee leave requests.
+
+TECHNICAL SKILLS
+• Languages: Java, JavaScript, SQL, Python
+• Frontend: React.js, Redux Toolkit, HTML5, CSS3, Tailwind CSS
+• Backend: Spring Boot, Spring Security, RESTful APIs, JWT, JPA/Hibernate
+• Database: MySQL, MongoDB
+• Tools: Git, GitHub, Linux, VS Code, Postman, Chrome DevTools
+• Core CS: OOP, Data Structures & Algorithms, DBMS, Computer Networks, Debugging
+
+CERTIFICATIONS
+• HTML & CSS: Beginner to Advanced — Udemy
+• Python Development with ChatGPT: Full-Stack App Development — Coursera
+• Artificial Intelligence — Reliance Foundation Skilling Academy
+• Artificial Intelligence Fundamentals — IBM SkillsBuild
+
+ACHIEVEMENTS
+• Solved 60+ DSA problems on LeetCode and completed 30+ problems from the NeetCode roadmap, demonstrating strong problem-solving, data structures, and algorithmic skills.`;
+
+      navigator.clipboard.writeText(atsResumeText)
+        .then(() => {
+          showToast('✓ Resume text copied to clipboard in ATS format!');
+        })
+        .catch(() => {
+          // Fallback if clipboard API is blocked
+          const tempArea = document.createElement('textarea');
+          tempArea.value = atsResumeText;
+          document.body.appendChild(tempArea);
+          tempArea.select();
+          document.execCommand('copy');
+          document.body.removeChild(tempArea);
+          showToast('✓ Resume text copied to clipboard!');
+        });
+    });
+  }
+}
+
+/* ── 7. TOAST NOTIFICATION UTILITY ── */
+function showToast(message) {
+  const toast = document.getElementById('toast');
+  if (!toast) return;
+
+  toast.textContent = message;
+  toast.classList.add('show');
+
+  setTimeout(() => {
+    toast.classList.remove('show');
+  }, 3200);
+}
+
